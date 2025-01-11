@@ -1,0 +1,14 @@
+/* styles.css */
+
+*,
+*::before,
+*::after {
+    outline: none!important;
+}
+
+/* Optional: Remove outline on specific focus elements if necessary */
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none!important;
+}
