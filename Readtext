@@ -1,0 +1,143 @@
+Set Up Database
+Use MySQL to set up the required database and tables. Create a database called employee_management (or name it anything you prefer) and execute the following SQL:
+
+sql
+Copy code
+CREATE DATABASE employee_management;
+USE employee_management;
+
+CREATE TABLE employees (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    phone VARCHAR(20),
+    gender VARCHAR(10),
+    dob DATE,
+    address TEXT,
+    position VARCHAR(50),
+    department VARCHAR(50),
+    date_of_joining DATE,
+    salary DECIMAL(10, 2),
+    employee_type VARCHAR(50),
+    work_location VARCHAR(100),
+    skill TEXT,
+    status VARCHAR(20),
+    profile_image VARCHAR(255)
+);
+Configure Database Connection
+Update the db.php file in the config/ directory to match your local database credentials:
+
+php
+Copy code
+<?php
+$host = 'localhost';   // Hostname, default is localhost
+$user = 'root';        // Username for MySQL
+$password = '';        // Your MySQL password
+$database = 'employee_management'; // Database name
+
+// Create connection
+$conn = new mysqli($host, $user, $password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+?>
+Start the Server
+If you are using XAMPP/WAMP, you can start Apache and MySQL, then navigate to http://localhost/employee_management/ in your browser.
+
+Database Setup
+You need a table to store employee details. The project assumes that you've set up a MySQL database as specified in the installation steps.
+
+SQL Schema
+You can find the schema within the employee_management.sql file, which creates the necessary table (employees). Import it into your MySQL database to use the project effectively.
+
+Usage
+1. Access Employee List
+Go to the index.php page to see the employee list.
+You can perform CRUD (Create, Read, Update, Delete) actions on the employee data from this page.
+2. Add New Employee
+Navigate to create.php to add a new employee. The form requires the employee's first name, last name, email, and additional details.
+3. Search Employees
+The search functionality allows searching by first name and last name. Enter a part of the name, and the system will auto-suggest employees from the list.
+4. View Employee Details
+Click on "Read More" under any employee's name to see detailed information about the employee.
+5. Edit Employee Information
+Edit employee details by clicking the "Edit" button in the actions column.
+6. Delete Employee
+Click on the "Delete" button to remove an employee record. Deletion is irreversible, so use with caution.
+Project Structure
+Here is an overview of the directory structure:
+
+bash
+Copy code
+/employee_management
+│
+├── assets/                 # CSS and JS Files (Bootstrap, Custom Styles)
+├── config/                 # Configuration Files (db.php for DB connection)
+│
+├── actions/                # PHP Actions for managing employees
+│   └── delete_action.php   # Handles deletion of employees
+│
+├── index.php               # Employee List Page
+├── create.php              # Form to Add a New Employee
+├── edit.php                # Edit Employee Information
+├── read.php                # View Employee Details
+└── employee_management.sql # SQL to create the table (for database setup)
+Contributing
+Fork the repository
+
+Make your own copy of this repository by clicking the "Fork" button at the top of the project page on GitHub.
+Clone your fork locally
+
+Clone the project to your local system using:
+
+bash
+Copy code
+git clone https://github.com/your_username/employee_management.git
+Create a new branch
+
+It's recommended to create a new branch for your changes.
+
+bash
+Copy code
+git checkout -b feature-branch
+Make changes & commit
+
+Modify, improve, or fix the code.
+
+Commit your changes:
+
+bash
+Copy code
+git commit -m "Description of the changes"
+Push changes to GitHub
+
+After making your changes, push them back to your GitHub fork.
+
+bash
+Copy code
+git push origin feature-branch
+Submit a Pull Request
+
+Once you’re happy with your changes, submit a Pull Request to merge your branch with the original repository.
+License
+This project is licensed under the MIT License - see the LICENSE.md file for details.
+
+yaml
+Copy code
+
+---
+
+### Steps to Create the `README.md`:
+
+1. Create a file called `README.md` in your root project folder.
+2. Copy and paste the above content into the file.
+3. Commit and push this file to your GitHub repository.
+
+```bash
+git add README.md
+git commit -m "Add README for Employee Management System"
+git push origin main
+After pushing, you'll have the detailed readme on your GitHub repository!
